@@ -7,9 +7,11 @@ go:
 services:
   - mysql
 
-script:
+install:
   - go get -u github.com/Masterminds/glide
   - glide install
+
+script:
   - tests/runner.sh
 
 notifications:
