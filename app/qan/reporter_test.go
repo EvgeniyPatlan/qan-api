@@ -23,14 +23,14 @@ import (
 	"time"
 
 	"github.com/cactus/go-statsd-client/statsd"
-	"github.com/daniel-nichter/deep-equal"
+	qp "github.com/percona/pmm/proto/qan"
 	"github.com/percona/qan-api/app/db"
 	"github.com/percona/qan-api/app/qan"
 	"github.com/percona/qan-api/config"
 	"github.com/percona/qan-api/stats"
 	"github.com/percona/qan-api/test"
 	testDb "github.com/percona/qan-api/tests/setup/db"
-	qp "github.com/percona/pmm/proto/qan"
+	"github.com/stretchr/testify/assert"
 	. "gopkg.in/check.v1"
 )
 
@@ -89,7 +89,7 @@ func (s *ReporterTestSuite) TestSimple(t *C) {
 	}
 
 	qr := qan.NewReporter(db.DBManager, s.nullStats)
-	got, err := qr.Profile(s.mysqlId, begin, end, r)
+	got, err := qr.Profile(s.mysqlId, begin, end, r, 0, "")
 	t.Check(err, IsNil)
 
 	j, err := ioutil.ReadFile(config.TestDir + "/qan/profile/may-2015-01.json")
@@ -98,9 +98,7 @@ func (s *ReporterTestSuite) TestSimple(t *C) {
 	err = json.Unmarshal(j, &expect)
 	t.Assert(err, IsNil)
 
-	diff, err := deep.Equal(got, expect)
-	t.Assert(err, IsNil)
-	t.Check(diff, IsNil)
+	assert.Equal(t, got, expect)
 }
 
 func (s *ReporterTestSuite) Test003(t *C) {
@@ -115,7 +113,7 @@ func (s *ReporterTestSuite) Test003(t *C) {
 	}
 
 	qr := qan.NewReporter(db.DBManager, s.nullStats)
-	got, err := qr.Profile(3, begin, end, r)
+	got, err := qr.Profile(3, begin, end, r, 0, "")
 	t.Check(err, IsNil)
 
 	j, err := ioutil.ReadFile(config.TestDir + "/qan/profile/003-01.json")
@@ -124,7 +122,5 @@ func (s *ReporterTestSuite) Test003(t *C) {
 	err = json.Unmarshal(j, &expect)
 	t.Assert(err, IsNil)
 
-	diff, err := deep.Equal(got, expect)
-	t.Assert(err, IsNil)
-	t.Check(diff, IsNil)
+	assert.Equal(t, got, expect)
 }

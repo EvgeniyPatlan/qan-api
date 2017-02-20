@@ -24,6 +24,8 @@ import (
 	"io/ioutil"
 	"time"
 
+	"github.com/percona/pmm/proto"
+	qp "github.com/percona/pmm/proto/qan"
 	"github.com/percona/qan-api/app/db"
 	"github.com/percona/qan-api/app/qan"
 	"github.com/percona/qan-api/config"
@@ -32,8 +34,6 @@ import (
 	"github.com/percona/qan-api/test"
 	"github.com/percona/qan-api/test/mock"
 	testDb "github.com/percona/qan-api/tests/setup/db"
-	"github.com/percona/pmm/proto"
-	qp "github.com/percona/pmm/proto/qan"
 	. "gopkg.in/check.v1"
 )
 

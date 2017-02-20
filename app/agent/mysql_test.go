@@ -20,12 +20,12 @@ package agent_test
 import (
 	"time"
 
+	"github.com/percona/pmm/proto"
 	"github.com/percona/qan-api/app/agent"
 	"github.com/percona/qan-api/app/db"
 	"github.com/percona/qan-api/app/instance"
 	"github.com/percona/qan-api/config"
 	testDb "github.com/percona/qan-api/tests/setup/db"
-	"github.com/percona/pmm/proto"
 	. "gopkg.in/check.v1"
 )
 

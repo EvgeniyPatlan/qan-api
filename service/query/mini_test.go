@@ -21,9 +21,9 @@ import (
 	"testing"
 
 	. "github.com/go-test/test"
+	qp "github.com/percona/pmm/proto/query"
 	"github.com/percona/qan-api/config"
 	"github.com/percona/qan-api/service/query"
-	qp "github.com/percona/pmm/proto/query"
 	. "gopkg.in/check.v1"
 )
 

@@ -23,10 +23,10 @@ import (
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/percona/pmm/proto"
 	"github.com/percona/qan-api/app/db"
 	"github.com/percona/qan-api/app/db/mysql"
 	"github.com/percona/qan-api/app/instance"
-	"github.com/percona/pmm/proto"
 )
 
 type MySQLHandler struct {

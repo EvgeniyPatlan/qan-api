@@ -18,8 +18,8 @@
 package main
 
 import (
+	"github.com/revel/cmd/harness"
 	"github.com/revel/revel"
-	"github.com/revel/revel/harness"
 )
 
 // This is used to build routes.go before running tests
